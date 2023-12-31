@@ -16,12 +16,21 @@ export default function Home() {
 
   return (
     <main className="flex min-h-screen flex-col items-center justify-between p-24">
-      <CldUploadButton
+      {/* <CldUploadButton
         onUpload={(result: UploadResult) => {
           setImageId(result.info.public_id);
         }}
         uploadPreset="giomsr4s"
-      />
+      /> */}
+      <CldUploadWidget signatureEndpoint="/api/sign-image">
+						{({ open }) => {
+							return (
+								<Button onClick={() => open?.()} variant="default">
+									Upload
+								</Button>
+							);
+						}}
+					</CldUploadWidget>
 
       {imageId && (
         <CldImage
